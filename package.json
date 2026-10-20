@@ -1,7 +1,8 @@
 {
-  "name": "base-template",
+  "name": "usnack-skills",
   "private": true,
   "scripts": {
+    "validate": "node scripts/validate-skills.js",
     "fetch-project-skills": "node scripts/fetch-project-skills.js"
   }
 }

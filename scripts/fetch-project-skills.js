@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// 프로젝트 전체에서 agent/skills 디렉터리를 탐색하여, SKILL.md를 가진 스킬을
+// plugins/<category>/skills 디렉터리에서 SKILL.md를 가진 스킬을
 // Codex와 Claude Code 프로젝트 스킬 디렉터리(.agents/skills, .claude/skills)에 연결합니다.
 
 const fs = require("fs");
@@ -11,13 +11,6 @@ const targetDirs = [
   path.join(projectRoot, ".agents", "skills"),
   path.join(projectRoot, ".claude", "skills"),
 ];
-
-const IGNORED_DIR_NAMES = new Set([
-  "node_modules",
-  ".git",
-  ".agents",
-  ".claude",
-]);
 
 function fail(message) {
   console.error(message);
@@ -35,34 +28,16 @@ function isSymlink(targetPath) {
   }
 }
 
-// 프로젝트 전체를 순회하며 "**/agent/skills" 디렉터리를 찾는다.
-function findSkillsSourceDirs(dir, results = []) {
-  let entries;
-  try {
-    entries = fs.readdirSync(dir, { withFileTypes: true });
-  } catch (error) {
-    return results;
-  }
-
-  for (const entry of entries) {
-    if (!entry.isDirectory() || IGNORED_DIR_NAMES.has(entry.name)) {
-      continue;
-    }
-
-    const entryPath = path.join(dir, entry.name);
-
-    if (entry.name === "skills" && path.basename(dir) === "agent") {
-      results.push(entryPath);
-      continue;
-    }
-
-    findSkillsSourceDirs(entryPath, results);
-  }
-
-  return results;
+// 배포 스킬만 탐색한다. 스킬 assets 안의 템플릿은 탐색하지 않는다.
+function findSkillsSourceDirs() {
+  const pluginsRoot = path.join(projectRoot, "plugins");
+  return fs.readdirSync(pluginsRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => path.join(pluginsRoot, entry.name, "skills"))
+    .filter((dir) => fs.existsSync(dir));
 }
 
-// 각 agent/skills 디렉터리 안에서 SKILL.md를 가진 스킬 디렉터리를 찾는다.
+// 각 플러그인의 skills 디렉터리 안에서 SKILL.md를 가진 스킬 디렉터리를 찾는다.
 function discoverSkills(skillsSourceDirs) {
   const skills = new Map();
 

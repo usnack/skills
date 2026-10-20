@@ -11,3 +11,8 @@
 .obsidian/cache
 .obsidian/plugins/obsidian-git/data.json
 
+
+# Generated development links and dependencies
+.agents/skills/
+.claude/skills/
+node_modules/
