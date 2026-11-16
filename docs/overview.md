@@ -9,6 +9,6 @@
 - `docs/`: 저장소를 유지보수하는 에이전트를 위한 프로젝트 지식입니다.
 - `scripts/`: 저장소 검증과 로컬 개발용 연결 도구입니다.
 
-현재 project 플러그인에 init-module, productivity 플러그인에 intern이 있습니다. 새 카테고리는 실제로 배포할 스킬이 생겼을 때 추가합니다.
+현재 project 플러그인에 init-module, productivity 플러그인에 intern, learning-material 플러그인에 chapter-design이 있습니다. 새 카테고리는 실제로 배포할 스킬이 생겼을 때 추가합니다.
 카테고리는 함께 설치할 작업 묶음으로 나눕니다. 스킬 원본은 한 곳에서만 관리합니다.
 AGENTS.md와 CLAUDE.md는 docs/README.md로 연결하는 역할을 유지합니다.
