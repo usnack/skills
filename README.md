@@ -8,6 +8,7 @@
 | 플러그인 | 스킬 | 용도 |
 | --- | --- | --- |
 | [project](plugins/project/README.md) | init-module | 프로젝트 지식 문서와 모듈 구조 초기화·갱신 |
+| [productivity](plugins/productivity/README.md) | intern | 업무 맥락 조사, 1차 수행과 의사결정 보고 |
 
 ## Codex 플러그인 설치
 
@@ -16,6 +17,7 @@
 ```bash
 codex plugin marketplace add usnack/skills
 codex plugin add project@usnack-skills
+codex plugin add productivity@usnack-skills
 ```
 
 플러그인은 카테고리 안의 스킬을 함께 설치합니다. 설치 후 새 세션에서 확인합니다.
@@ -49,6 +51,7 @@ npm run fetch-project-skills
 ```bash
 codex plugin marketplace add .
 codex plugin add project@usnack-skills
+codex plugin add productivity@usnack-skills
 ```
 
 같은 스킬을 개발용 링크와 플러그인으로 동시에 로드하지 않도록 테스트 환경을 구분합니다.

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Intern"
+  short_description: "Notion과 Slack 맥락을 조사해 작업하고 판단할 대안을 보고합니다"

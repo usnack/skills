@@ -1,0 +1,10 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "productivity",
+  "version": "0.1.0",
+  "description": "업무 맥락을 조사하고 선행 작업과 의사결정 보고를 지원하는 스킬 모음",
+  "author": {
+    "name": "usnack"
+  },
+  "repository": "https://github.com/usnack/skills"
+}
