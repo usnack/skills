@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "project",
-  "version": "26-10-21",
+  "version": "26-10-21-1",
   "description": "프로젝트 구조와 지식 문서를 구성하고 관리하는 스킬 모음",
   "author": {
     "name": "usnack"
