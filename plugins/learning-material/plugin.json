@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "learning-material",
-  "version": "0.1.0",
+  "version": "26-11-18",
   "description": "교육 과정의 단원 기획과 학습 자료 제작을 지원하는 스킬 모음",
   "author": {
     "name": "usnack"

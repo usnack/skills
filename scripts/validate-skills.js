@@ -45,7 +45,9 @@ try {
     const manifest = readJson(path.join(dir, 'plugin.json'));
     assert.equal(manifest.$schema, 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json');
     assert.equal(manifest.name, entry.name);
-    assert(/^\d+\.\d+\.\d+$/.test(manifest.version), '버전은 major.minor.patch 형식이어야 합니다');
+    assert(/^\d{2}-\d{2}-\d{2}$/.test(manifest.version), '버전은 YY-MM-DD 형식이어야 합니다');
+    const versionDate = new Date(`20${manifest.version}T00:00:00Z`);
+    assert(!Number.isNaN(versionDate.getTime()) && versionDate.toISOString().slice(2, 10) === manifest.version, '버전은 유효한 날짜여야 합니다');
     assert(manifest.description?.trim() && manifest.author?.name);
     assert(fs.existsSync(path.join(dir, 'README.md')));
     const changelog = fs.readFileSync(path.join(dir, 'CHANGELOG.md'), 'utf8');
